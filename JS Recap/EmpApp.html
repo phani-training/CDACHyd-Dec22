@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="empApp.js"></script>
+    <style>
+        body{
+            background-color: antiquewhite;
+            color:brown;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        div{
+            display: inline-block;
+            width: 45%;
+            padding: 10px;
+            margin:10px;
+            vertical-align: top;
+            border: 2px solid blue;
+        }
+        h1{
+            text-align: center;
+            padding: 50px;
+            background-color: burlywood;
+            color:indianred;
+        }
+        nav{
+            background-color: lightgrey;
+            margin: 5px;
+            padding: 5px;
+            text-align: center;
+        }
+        li, a{
+            display: inline-block;
+            background-color: coral;
+            color:black;
+            padding: 10px;
+            margin-left:10px;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        const empRepo = new EmployeeRepo();//Create the instance of the Repo..
+        function display(){
+            const empList = empRepo.getAllEmployees();
+            const table = document.getElementById("tblRecords");
+            table.innerHTML = `<tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Employee Address</th>
+                        <th>Employee Salary</th>
+                        <th>Options</th>
+                    </tr>`; 
+            for(const emp of empList){
+                const row = `<tr>
+                                <td>${emp.id}</td>
+                                <td>${emp.name}</td>
+                                <td>${emp.address}</td>
+                                <td>Rs. ${emp.salary}</td>
+                                <td><a href="#">Edit</a></td>
+                            </tr>`;
+                table.innerHTML += row;            
+            }
+        }
+
+        function onAddNew(){
+            //get all the input values.
+            const id = parseInt(document.getElementById("txtNewId").value);
+            const name = document.getElementById("txtNewName").value;
+            const address = document.getElementById("txtNewAddress").value;
+            const salary = document.getElementById("txtNewSalary").value;
+            //create the employee object
+            const empObj = new Employee(id, name, address, salary);
+            //call the addnewEmployee function from the empRepo object. 
+            empRepo.addNewEmployee(empObj);
+            alert("Employee added successfully");
+            //call display to get the fresh set of data populated to the table
+            display();
+        }
+        
+    </script>
+    <title>Document</title>
+</head>
+<body onload="display()">
+    <h1>Employee Monitoring System</h1>
+    <nav>
+        <ul style="list-style-type: none;">
+            <li>
+                <a href="#">Show All Records</a>
+                <a href="#">Add New Record</a>                
+            </li>
+        </ul>
+    </nav>
+    <hr>
+    <div>
+        <table border="1" id="tblRecords">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Address</th>
+                <th>Employee Salary</th>
+                <th>Options</th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h2>Add New Employee</h2>
+        <hr>
+        <p>Enter the ID: <input type="number" id="txtNewId" placeholder="Enter the ID"></p>
+        <p>Enter the Name: <input type="text" id="txtNewName" placeholder="Enter the Name"></p>
+        <p>Enter the Address: <input type="text" id="txtNewAddress" placeholder="Enter the Address"></p>
+        <p>Enter the Salary: <input type="number" id="txtNewSalary" placeholder="Enter the Salary"></p>
+        <p>
+            <button onclick="onAddNew()">Add to the Database</button>
+        </p>
+    </div>
+</body>
+</html>
