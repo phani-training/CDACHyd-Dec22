@@ -28,3 +28,4 @@
 - $("#divSection") ->Select the element with an ID called divSection. 
 - $(".area") -> Refers to all elements with the class area. 
 - Selectors works similar to CSS selectors.
+- The selector can be a query of the element like finding, filtering, getting access to Parent, Children and Siblings.
