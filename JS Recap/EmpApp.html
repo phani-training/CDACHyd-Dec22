@@ -13,7 +13,7 @@
         }
         div{
             display: inline-block;
-            width: 45%;
+            width: 65%;
             padding: 10px;
             margin:10px;
             vertical-align: top;
@@ -58,9 +58,30 @@
                                 <td>${emp.name}</td>
                                 <td>${emp.address}</td>
                                 <td>Rs. ${emp.salary}</td>
-                                <td><a href="#">Edit</a></td>
+                                <td>
+                                    <a href="#" onclick="getDetails(${emp.id})">Details</a>
+                                    <a href="#">Delete</a>
+                                </td>
                             </tr>`;
                 table.innerHTML += row;            
+            }
+        }
+
+        function clearText(){
+            document.getElementById("txtId").value = "";
+            document.getElementById("txtName").value = "";
+            document.getElementById("txtAddress").value = "";
+            document.getElementById("txtSalary").value = "";
+        }
+        function getDetails(id){
+            try{
+                const empRec = empRepo.getEmployeeById(id);
+                document.getElementById("txtId").value = empRec.id;
+                document.getElementById("txtName").value = empRec.name;
+                document.getElementById("txtAddress").value = empRec.address;
+                document.getElementById("txtSalary").value = empRec.salary;
+            }catch(ex){
+                alert(ex)
             }
         }
 
@@ -79,6 +100,20 @@
             display();
         }
         
+        function onUpdate(){
+            //get all the inputs.
+            const id = parseInt(document.getElementById("txtId").value);
+            const name = document.getElementById("txtName").value;
+            const address = document.getElementById("txtAddress").value;
+            const salary = document.getElementById("txtSalary").value;
+            //create the object
+            const empObj = new Employee(id, name, address, salary);
+            //call the modifyEmployee of the empRepo object.
+            empRepo.modifyEmployee(empObj);
+            clearText()//clears all the entries of the text boxes...
+            //Repopulate the table with fresh records.
+            display();  
+        }
     </script>
     <title>Document</title>
 </head>
@@ -94,7 +129,7 @@
     </nav>
     <hr>
     <div>
-        <table border="1" id="tblRecords">
+        <table border="1" id="tblRecords" width="100%">
             <tr>
                 <th>Employee ID</th>
                 <th>Employee Name</th>
@@ -103,6 +138,17 @@
                 <th>Options</th>
             </tr>
         </table>
+    </div>
+    <div>
+        <h2>View Employee Details</h2>
+        <hr>
+        <p>Enter the ID: <input disabled type="number" id="txtId" placeholder="Enter the ID"></p>
+        <p>Enter the Name: <input type="text" id="txtName" placeholder="Enter the Name"></p>
+        <p>Enter the Address: <input type="text" id="txtAddress" placeholder="Enter the Address"></p>
+        <p>Enter the Salary: <input type="number" id="txtSalary" placeholder="Enter the Salary"></p>
+        <p>
+            <button onclick="onUpdate()">Update  to the Database</button>
+        </p>
     </div>
     <div>
         <h2>Add New Employee</h2>
