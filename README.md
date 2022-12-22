@@ -23,3 +23,8 @@
 - $("a") ->Refers to all the a Tags of the Document
 - $("a:first") ->Filter to refer only the 1st Tag of the Document.
 - $("a:last") ->Filter to refer only the last Tag of the Document.
+- $("a:eq(2)") ->Filter to refer the 3rd a Tag of the document.
+- $("div") ->Select all Divs. This is called Selectory by Tagname
+- $("#divSection") ->Select the element with an ID called divSection. 
+- $(".area") -> Refers to all elements with the class area. 
+- Selectors works similar to CSS selectors.
