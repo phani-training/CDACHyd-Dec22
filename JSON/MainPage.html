@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 2px solid blue;
+            vertical-align: top;
+        }
+        .card{
+            width: 25%;
+            height: 250px;
+            display: inline-block;
+        }
+        img{
+            width: 100%;
+            height: 75%;
+        }
+    </style>
+    <script>
+        function displayonDiv(data){
+            document.getElementById("pDisplay").innerHTML = `<h2>The Name: ${data.Customer.name}</h2><p>The Address: ${data.Customer.address}</p><p>The Bill Amount:Rs.  ${data.Customer.billAmount}</p>`
+        }
+
+        function onFruits(){
+            fetch("./Ex02-Arrays.json").then(function(response){
+                return response.json()
+            }).then(function(array){
+                array.forEach(element => {
+                    document.getElementById("pFruits").innerHTML += `<li>${element}</li>`
+                });
+            })
+        }
+
+        function onDisplayRecords(){
+            
+             fetch("./SampleData.json").then(function(response){
+                return response.json()
+             }).then(function(records){
+                for(const obj of records){
+                    const area = `<div class="card">
+                            <h2>${obj.cstName}</h2>
+                            <hr>
+                            <img src="${obj.cstPic}"/>
+                            <p>Address: ${obj.cstAddress}</p>
+                        </div>`
+                    document.getElementById("divDisplay").innerHTML += area;    
+                }
+             })           
+        }
+        window.onload = function(){
+            //fetch is a API in JavaScript to perform async operations with less code. It returns a PROMISE object which contains the success code and failure code/
+            fetch('./Ex01-Object.json')
+                .then(function (response) {
+                   return response.json()
+                }).then(function (data) {
+                    displayonDiv(data);
+                }).catch(function(err){
+                    alert(err)
+                })
+        }
+    </script>
+</head>
+<body>
+    
+    <div>
+        <h1>JSON Object:</h1>
+        <hr>
+        <p id="pDisplay"></p>
+    </div>
+
+    <div>
+        <h1>Arrays</h1>
+        <button onclick="onFruits()">Fetch Fruits</button>
+        <p id="pFruits"/>
+    </div>
+    <div id="divDisplay">
+        <button onclick="onDisplayRecords()">Display Records</button>
+        <hr/>
+    </div>
+</body>
+</html>

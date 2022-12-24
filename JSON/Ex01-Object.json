@@ -1,0 +1,5 @@
+{
+    "Customer" : {
+        "name" : "Phaniraj", "address" : "Bangalore", "billAmount" : 4500, "isRegularCustomer" : true
+    }   
+}
