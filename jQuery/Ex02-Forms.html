@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./libs/jquerylib.min.js"></script>
+    <title>Document</title>
+    <script>
+        function init(){
+            $("#btnSave").click(function(){
+                const obj ={}
+                obj.name = $("#txtName").val();
+                obj.email = $("#txtEmail").val();
+                obj.dateOfBirth = new Date($("#txtDate").val());//Date object.
+                $("div:eq(1) > p").text(JSON.stringify(obj));
+            })
+        }
+        $().ready(function(){
+            init();
+        });//ready means that the document is now viewable in the browser. It is similar to the load event of the Window or document. It is the time when the full DOM structure of the page is loaded to the browser. document.ready only ensures that the DOM structure is loaded, not the CSS, images of the document. DOM ready will happen before the window.onload. 
+        
+    </script>
+</head>
+<body>
+    <div>
+        <h2>User Registration Form</h2>
+        <hr>
+        <p>Enter the Name: <input id="txtName" type="text" placeholder="Name Please"></p>
+        <p>Enter the Email Address<input id="txtEmail" type="email" placeholder="Email Address"></p>
+        <p>Enter the Date of Birth: <input id="txtDate" type="date"></p>
+        <p><input id="btnSave" type="button" value="Register"></p>
+    </div>
+    <div>
+        <p style="color:red">
+
+        </p>
+    </div>
+</body>
+</html>

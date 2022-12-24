@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./libs/jquerylib.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("a:first").click(function(){
+                $("div").toggle(2000, function(){
+                    $("a:first").text("Show Elements")
+                });
+            });
+            // $("a:last").click(function(){
+            //     $("div").show(2000);
+            // })
+        })
+    </script>
+    <style>
+        div{
+            background-color: brown;
+            color:wheat;
+            width: 20%;
+            height: 200px;
+            display: inline-block;
+        }
+        nav{
+            padding: 5px;
+            margin:5px;
+            background-color: aqua;
+            color:burlywood;
+        }
+        a{
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px;
+            margin:10px;
+            background-color: yellowgreen;
+            color:green;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Elements</a>
+        <!-- <a href="#">Show Elements</a> -->
+    </nav>
+    <div>
+        <p>
+            The jQuery Function hide simply sets the display property to none. and the show function will simply restores the display back<br>
+            Its second parameter will take the duration in milliseconds for the hiding process to finish
+        </p>
+    </div>
+    <div></div>
+    <div></div>
+</body>
+</html>

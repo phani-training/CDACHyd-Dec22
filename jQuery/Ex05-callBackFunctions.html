@@ -1,0 +1,22 @@
+<h1>What is CallBack funcs?</h1>
+<hr>
+<p>
+    Callback functions are functions that are passed as arguments to other functions. This is used majorly in Event driven programming where the User performs an event which the event object will call a Function set by the user for that event. The function is called as Event handler. <br>
+    It is easy to create a function that takes another function as argument in JS. 
+</p>
+<script>
+    //First function
+    function onClick(func){
+        const no = parseInt(prompt("Enter a number"));
+        const strValue = prompt("Enter a string value");
+        func(no, strValue);
+    }
+
+    //CallBack function.
+    function sampleFunc(val1, val2){
+        for(let i =0; i <val1; i++){
+            console.log(val2);
+        }
+    }
+    onClick(sampleFunc);//callback func is passed as arg to the first function. 
+</script>

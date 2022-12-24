@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,4 +50,57 @@
         <button onclick="onRegister()">Sign Up</button>
     </div>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const users = new Map();
+        function onLogin(){
+            const uname = document.getElementById("txtUser").value;
+            const pwd = document.getElementById("txtPwd").value;
+            if(!users.has(uname)){
+                alert("User Name is wrong")
+            }else{
+                if (users.get(uname) == pwd)
+                    alert("Welcome User")
+                else
+                    alert("Password is wrong")
+            }
+        }
+
+        function onRegister(){
+            const uname = document.getElementById("txtNewUser").value;
+            const pwd = document.getElementById("txtNewPwd").value;
+            if(users.has(uname)){
+                alert("User is already registered");
+            }else{
+                users.set(uname, pwd);
+                alert("User is registered, please login!!!")
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h2>Login Page</h2>
+        <hr>
+        <input placeholder="UserName" id="txtUser"/>
+        <input placeholder="Password" id="txtPwd" type="password"/>
+        <button onclick="onLogin()">Login</button>
+    </div>
+
+    <div>
+        <h2>Sign Up Page</h2>
+        <hr>
+        <input placeholder="UserName" id="txtNewUser"/>
+        <input placeholder="Password" id="txtNewPwd" type="password"/>
+        <button onclick="onRegister()">Sign Up</button>
+    </div>
+</body>
+>>>>>>> e3b7befb269f3285234b86b26688e1266fbf48df
 </html>

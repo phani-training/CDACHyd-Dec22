@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./libs/jquerylib.min.js"></script>
+    <title>Document</title>
+    <style>
+        .bigDiv{
+            font-size: 40pt;
+            background-color: brown;
+            color:wheat;
+            width: 20%;
+            height: 200px;
+        }
+    </style>
+    <script>
+        $().ready(function(){
+            $("[class='bigDiv']").append("This element includes some content ")
+            $("input[type = 'password']").css("background-color","red");//This means that U R selecting an element whose attribute called type is having a value called password
+        })
+    </script>
+</head>
+<body>
+    <div class="bigDiv" id="myDiv">
+        <input type="text"/>
+        <input type="password"/>
+        <p>
+            U can select an element based on an attribute value. The Example would have a div with a certain class, U can refer it using [class = value].
+        </p>
+        asdfasdfas
+    </div>
+</body>
+</html>

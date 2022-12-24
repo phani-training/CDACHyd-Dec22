@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./libs/jquerylib.min.js"></script>
+    <script>
+        function updateContent(selected){
+            let url = selected + ".txt";
+            var req = new XMLHttpRequest();
+            req.open("GET", url);
+            req.onload = () =>{
+                $("#pre").text(req.response)
+            }
+            req.send();
+        }
+        $().ready(function(){
+            $("#selector").change(function(){
+                const value = $("#selector").val();
+                updateContent(value);
+            })
+        })
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>What is Ajax?</h1>
+    <hr>
+    <section>
+        <p>
+            Ajax is a capability of transfering info from a Web server as partial Requests instead of Full Request. A Partial Request is one that sends the request in the form of XML HTTP Request(XHR), here only partial part of the page is sent for the server and will update only that part of the page instead of the whole page sent for processing. 
+            IRCTC, GOOGLE MAPs, MS OFFIC 365 use this mechanism of updating partial sections of the Page instead of the whole page sent for the processing. <br/> 
+            Ajax stands for Asynchronous JS and XML. <br/>
+            We would use Ajax to make calls to the server and fetch the data from the server. The data would be text based like JSON, XML or plain text. <br>
+            In our current example, we are extracting text data from a Normal Text files. <br>
+            To make this work, U should have a Web server, VS code has a Plugin to create LIVE Server on which U could test UR Application code. 
+        </p>
+    </section>
+    <section>
+        <h1>Content viewed thru' Ajax</h1>
+        <hr>
+        <form>
+            <select id="selector">
+                <option>Data1</option>
+                <option>Data2</option>
+                <option>Data3</option>
+                <option>Data4</option>
+            </select>
+        </form>
+    </section>
+    <section>
+        <h2> Details of the Data</h2>
+        <div id="pre" style="width: 60%; height: 350px;">
+            Some Default Content
+        </div>
+    </section>
+</body>
+</html>

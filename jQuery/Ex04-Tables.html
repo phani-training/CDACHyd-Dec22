@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./libs/jquerylib.min.js"></script>
+    <title>Document</title>
+    <script>
+        const data = [
+            {empId: 123, empname : "phaniraj", empaddress : "bangalore", empsalary: 45000},
+            {empId: 124, empname : "robert", empaddress : "bangalore", empsalary: 45000},
+            {empId: 125, empname : "Juliam", empaddress : "bangalore", empsalary: 45000},
+            {empId: 126, empname : "Anderson", empaddress : "bangalore", empsalary: 45000},
+            {empId: 127, empname : "Stew", empaddress : "bangalore", empsalary: 45000},
+        ]
+        $().ready(function(){
+            $.each(data, (index, item)=>{
+                let row = `<tr><td>${item.empId}</td><td>${item.empname}</td><td>${item.empaddress}</td><td>${item.empsalary}</td></tr>`
+                $("table").append(row);
+            })
+            $("tr:even").css("background-color", "green")
+            $("tr:odd").css("background-color", "lightgreen")
+        })
+    </script>
+</head>
+<body>
+    <p>
+        $.each is a API of jQuery used to iterate thru the collection. Now thanks to ES6, we have different ways of iterating collections in JS. Earlier, we depended on the jQuery's $.each function to perform simple iterations on the collection objects.
+    </p>
+    <h2>How to debug JS code in a Browser</h2>
+    <hr>
+    <ul>
+        <li>Open the Page in the browser and press F12(Developer Tools)</li>
+        <li>Move to the Source Tab and reload the page so that the HTML is loaded for debugging</li>
+        <li>Set the breakpoints to test the section of code that U want to monitor</li>
+        <li>Once the Action starts, the browser hits the break point and the App pauses the execution</li>
+        <li>Press F10 to execute each line of the code</li>
+        <li>If the Line contains a function call and U want to go into the function, press F11(Step Into)</li>
+        <li>Hover the mouse on the variables to evaluate their values</li>
+    </ul>
+    <table border="1">
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Address</th>
+            <th>Employee Salary</th> 
+        </tr>
+    </table>
+</body>
+</html>

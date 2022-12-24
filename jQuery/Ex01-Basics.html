@@ -1,3 +1,63 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./libs/jquerylib.min.js"></script>
+    <title>Basic Page</title>
+    <style>
+        div{
+            width: 30%;
+            height: 400px;
+            background-color: red;
+            display: inline-block;
+        }
+        </style>
+        <script>
+         
+         function onReady(){
+             console.log("Hello world")
+             $("div").click(function(){
+                $(this).css("background-color", "green")
+             })
+            //  $("div").mouseenter(function(){
+            //     $(this).css("font-size", "40pt");
+            //  })
+            //  $("div").mouseleave(function(){
+            //     $(this).css("font-size", "20pt");
+            //  })
+            $("a:first").click(function(){
+                $("div").hide(2000)
+            })
+            $("a:last").click(function(){
+                $("div").show(2000)
+            })
+
+            alert($("nav").children("a").text());
+            $("nav").parent().append("<h1>Adding this to the Document</h1>")
+         }
+            $().ready(onReady)
+        </script>
+</head>
+<body>
+    <nav>
+        <a href="#">Hide All</a>
+        <a href="#">Show All</a>
+    </nav>
+    <div>
+        First Area
+    </div>
+    <div>
+        Second Area
+    </div>
+    <div>
+        Third Area
+    </div>
+
+</body>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,4 +85,5 @@
         })
     </script>
 </body>
+>>>>>>> e3b7befb269f3285234b86b26688e1266fbf48df
 </html>

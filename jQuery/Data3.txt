@@ -1,0 +1,2 @@
+Content of Data 3 taken from a File.
+This content is loaded using Xml HTTP Request

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./libs/jquerylib.min.js"></script>
+    <style>
+        .heading, .panel{
+            padding: 10px;
+            text-align: center;
+            background-color: blanchedalmond;
+            border: 2px solid red;
+            margin: 5px;
+        }
+        .panel{
+            padding: 50px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // $("button:first").click(function(){
+            //     $(".panel").fadeIn(2000)
+            // })
+            // $("button:last").click(function(){
+            //     $(".panel").fadeOut(2000)
+            // })
+
+            //////////////////////2nd example for toggle////////////////////
+            $("button").click(function(){
+                $(".panel").fadeToggle(2000, function(){
+                    const content = $("button").text() == "Fade Out" ? "Fade In" : "Fade Out";
+                    $("button").text(content);
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="panel">
+        Some data
+    </div>
+    <!--First Demo to try
+        
+    <button>Fade in</button>
+    <button>Fade Out</button>
+    
+    -->
+
+    <button>Fade Out</button>
+</body>
+</html>

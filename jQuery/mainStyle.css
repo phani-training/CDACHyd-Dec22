@@ -1,0 +1,19 @@
+body{
+    background-color: bisque;
+    color:brown;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20pt;
+}
+nav{
+    background-color: darkmagenta;
+    text-align: center;
+    padding: 5px;
+}
+li, a{
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    background-color: red;
+    color:yellow;
+    text-decoration: none;
+}

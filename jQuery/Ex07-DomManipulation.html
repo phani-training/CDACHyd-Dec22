@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./libs/bootstrap.min.css">
+    <link rel="stylesheet" href="mainStyle.css">
+    <script src="./libs/jquerylib.min.js"></script>
+    <script src="./Ex07-DomManipulation.js"></script>
+    <script src="./Ex07-DomManipulationUI.js"></script>
+    <title>Document</title>
+    <script>
+        const bookRepo = new BookRepository();
+
+        function init(){
+            //provide event binding and data binding.
+            hideDivs();
+            $("nav").find("a:eq(1)").click(onAddLink)
+            $("nav").find("a:first").click(onShowLink)
+            $("nav").find("a:eq(2)").click(onDeleteLink)
+            $("div.col-md-4 >div:eq(1)").find("button").click(onAddNew);
+            $("div.col-md-4 >div:first").find("button").click(onUpdate);
+        }
+        $().ready(init);
+    </script>
+</head>
+<body>
+    <h1>Book Store Manager Software</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Show Books</a></li>
+            <li><a href="#">Add Book</a></li>
+            <li><a href="#">Delete Book</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-bordered table-stripped bg-info">
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Book Title</th>
+                        <th>Book Author</th>
+                        <th>Book Price</th>
+                        <th>Options</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h1>Edit Book</h1>
+                    <hr>
+                    <p>Book ID:<input disabled class="form-control" id="txtId" type="text"></p>
+                    <p>Book Title: <input  class="form-control" id="txtTitle" type="text"></p>
+                    <p>Author: <input  class="form-control" id="txtAuthor" type="text"></p>
+                    <p>Price: <input  class="form-control" type="text" id="txtPrice"></p>
+                    <p><button class="btn btn-info">Update Book</button></p>
+                </div>
+                <div>
+                    <h1>Add New Book</h1>
+                    <hr>
+                    <p>Book ID:<input class="form-control" id="txtNewId" type="text"></p>
+                    <p>Book Title: <input  class="form-control" id="txtNewTitle" type="text"></p>
+                    <p>Author: <input  class="form-control" id="txtNewAuthor" type="text"></p>
+                    <p>Price: <input  class="form-control" type="text" id="txtNewPrice"></p>
+                    <p><button class="btn btn-info">Add Book</button></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <hr>
+        <p class="text-danger" style="text-align: center; font-style: italic; font-size:0.6em;">&copy;CopyRights CDAC- Hyderabad Training-2022</p>
+    </footer>  
+</body>
+</html>

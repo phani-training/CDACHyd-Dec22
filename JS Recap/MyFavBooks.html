@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,4 +40,47 @@
         <ul style="list-style-type: square;"></ul>
     </p>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const listOfBooks = [];
+        function onAdd(){
+            const enteredBook = document.getElementById("txtBook").value;
+            listOfBooks.push(enteredBook);
+            alert("Book added to the store..")
+        }
+
+        function onDisplay(){
+            //get the ref of the ul element which is used to append the list items. 
+            const ul = document.querySelector("ul")
+            ul.innerHTML = "";//erase existing data.
+            //iterate thru the array => for, for...in or for...of
+           for(const book of listOfBooks){
+            //for every book U create a <li>
+              const li = document.createElement("li");
+              li.textContent = book; 
+              ul.append(li); 
+           }
+        }
+    </script>
+</head>
+<body>
+    <h1>List of Fav Books of mine!!!!</h1>
+    <hr>
+    <p>
+        Enter UR Fav Book: <input type="text" id="txtBook" placeholder="Enter UR Fav Book"/>
+        <button onclick="onAdd()">Add Book</button>
+    </p>
+    <p>
+        <button onclick="onDisplay()">Display All Books</button>
+        <ul style="list-style-type: square;"></ul>
+    </p>
+</body>
+>>>>>>> e3b7befb269f3285234b86b26688e1266fbf48df
 </html>
