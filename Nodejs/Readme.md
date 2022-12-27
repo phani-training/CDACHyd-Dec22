@@ -24,9 +24,25 @@
 - A Module can typically contain multiple functions and classes in it. 
 - Sometimes U would create one Class and instantiate it immediately after creating it.  This is called as IIFE =>Immediately Invoked Function Expression. Here the module returns an object directly instead of a Class. This will be a singleton object. 
 ### BuiltIn Modules of Nodejs
+NODEJS itself exposes some built in(ready to use) modules to develop rich internet based Applications. They include fs module for file reading and writing, http module for handling HTTP requests(Web servers), os module for handling OS related info and many more. The documentation of the NODEJS contains the list of APIs available for developing Nodejs based Apps. 
 #### FileSystem(fs)
+- Used for interacting with files of the OS. It has APIs for reading, writing, appending and removing files from the System. There are 2 versions for each API: Synchronous version and Asynchronous version. It is recommended to use Async version as that is the way Nodejs works and U will take the full advantage of Async Programming promoted by Nodejs. 
+- for nodejs modules we should not use ./ while we use the require statement 
+- Some of the important APIs:
+    1. readFile
+    2. appendFile
+    3. writeFile
+    4. open ->1 Function that can do all the kinds of File Operations in Nodejs. 
 #### Events(eventemitter)
 #### Operating System(os)
+- os module represents the OS of the Nodejs Application Environment. 
+- It has APIs to get info about the OS like memory, pc name, uptime, os version and os itself. 
+- Some of the important APIs:
+    1. upTime().
+    2. totalMem() and freeMem()
+    3. version()
+    4. userInfo() and hostName();
+    5. cpus()
 #### HTTP(http)
 ### Database Access using MongoDB
 ### Express

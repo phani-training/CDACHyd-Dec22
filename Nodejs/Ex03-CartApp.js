@@ -9,6 +9,10 @@ shoppingApp.addItem({id:114, itemName :"BPL TV", price : 45000})
 shoppingApp.addItem({id:115, itemName :"MI TV", price : 35000})
 
 const items = shoppingApp.getAll();
+
+//display the items as table in Console
+console.table(items);
+
 items.forEach((value)=>{
     console.log(value.itemName)
 })

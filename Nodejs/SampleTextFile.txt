@@ -1,0 +1,2 @@
+New content using AsyncThis line is appended to the file
+This line is appended to the next line in the file
