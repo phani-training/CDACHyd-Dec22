@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+        const baseUrl = '/Employees'
+        function populateTable(){
+            $.get(baseUrl, (responseData)=>{
+                $("table").find("tr:gt(0)").remove();
+                for(const emp of responseData){
+                    const row = `<tr><td>${emp.EmpID}</td><td>${emp.EmpName}</td><td>${emp.EmpAddress}</td><td>${emp.EmpSalary}</td></tr>`
+                    $("table").append(row);
+                }
+            })
+        }
+
+        function onAddRecord(){
+           const emp = {};
+           emp.EmpID = $("#txtId").val();
+           emp.EmpName = $("#txtName").val();
+           emp.EmpAddress = $("#txtAddress").val();
+           emp.EmpSalary = $("#txtSalary").val();
+           $.post(baseUrl, emp, (data)=>{
+            alert(data);
+           })
+        }
+        function init(){
+            populateTable();
+            $("button").click(onAddRecord);
+        }
+        $().ready(init);
+    </script>
+    <style>
+        .heading{
+            padding: 50px;
+            margin: 10px;
+            color: brown;
+            background-color: blanchedalmond;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Employee management Software</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="text-secondary bg-warning text-center p-3">List of Employees</h2>
+                <hr>    
+                <table class="table table-bordered table-hover bg-info table-striped">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Employee Address</th>
+                        <th>Employee Salary</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h2 class="h2 text-primary">New Employee</h2>
+                <hr>
+                <p>Enter the ID: <input type="number" id="txtId" placeholder="ID" class="form-control"></p>
+                <p>Enter the Name: <input id="txtName" placeholder="Name" class="form-control"></p>
+                <p>Enter the Address: <input id="txtAddress" placeholder="Address" class="form-control"></p>
+                <p>Enter the Salary<input type="number" id="txtSalary" placeholder="Salary" class="form-control"></p>
+                <p><button class="btn btn-success">Add Employee</button></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!--
+    1. Develop the MongoApp to connect to DB and get some records.
+    2. Develop a REST API using Express and Mongodb
+    3. Create a Client html page with jquery and bootstrap to interact with the REST API using Ajax($.get and $.post). 
+-->
