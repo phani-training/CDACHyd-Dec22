@@ -41,8 +41,36 @@ app.get("/Client", (req, res)=>{
     res.sendFile(__dirname + "/RestClient.html")   
 })
 
-app.post("/Employees", (req, res)=>{
+app.get("/Employees/:id", (req, res)=>{
+    const id = parseInt(req.params.id);//Used to retrieve the Url Querystring data..
+    db.collection("employees").find({"EmpID" : id}).toArray().then(data=>{
+        res.send(data);
+    })
+})
+//PUT is for updating
+app.put("/Employees", (req, res)=>{
     let rec = req.body;
+    console.log(rec);
+    db.collection("employees").updateOne({
+        "EmpID" : parseInt(rec.EmpID)
+    }, {$set: rec});
+    res.send("Record updated to the database")
+})
+
+app.delete("/Employees/:id", (req, res)=>{
+    let id = parseInt(req.params.id);
+    db.collection("employees").remove({"EmpID" : id});
+    res.send("record removed from the database")
+})
+
+//POST is for adding
+app.post("/Employees", (req, res)=>{
+    let content = req.body;
+    let rec = {};
+    rec.EmpID = parseInt(content.EmpID)
+    rec.EmpName = content.EmpName
+    rec.EmpAddress = content.EmpAddress
+    rec.EmpSalary = parseInt(content.EmpSalary)
     console.log(res);
     db.collection("employees").insert(rec);
     res.send("Employee inserted to the database")

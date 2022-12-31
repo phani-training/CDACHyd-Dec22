@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        const url = 'http://localhost:1234/Books'
+        function onEdit(id){
+            //call to the api and get the specific record:
+            const tempUrl = `${url}/${id}`;
+            $.get(tempUrl, (data)=>{
+                $("#txtId").val(data.BookId)
+                $("#txtTitle").val(data.Title)
+                $("#txtAuthor").val(data.Author)
+                $("#txtPrice").val(data.Price)
+            })
+        }
+        function populateBooks(){
+            $.get(url, (data)=>{
+                $.each(data, (index, book)=>{
+                    const row = `<tr>
+                                    <td>${book.Title}</td>
+                                    <td>${book.Author}</td>
+                                    <td>${book.Price}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="#" onclick="onEdit(${book.BookId})">Edit</a
+                                    </td>
+                                </tr>`
+                    $("table").append(row)            
+                })
+            })
+        }
+        function onUpdate(){
+            const obj = {};
+            obj.BookId = $("#txtId").val();
+            obj.Title = $("#txtTitle").val();
+            obj.Author = $("#txtAuthor").val();
+            obj.Price = $("#txtPrice").val();
+            $.ajax({
+                method:'PUT',
+                data : obj,
+                url : url,
+                success : function(res){
+                    alert(res)
+                }
+            })
+        }
+        $().ready(function(){
+            populateBooks();
+            $("#btnUpdate").click(onUpdate)
+        })
+    </script>
+</head>
+<body>
+    <h1 class="text-danger">App</h1>
+
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>Book Title</th>
+            <th>Book Author</th>
+            <th>Book Price</th>
+            <th>Options</th>
+        </tr>
+    </table>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 ml-3">
+                <div>
+                    <h1 class="h1">Edit Book Details</h1>
+                    <input type="text" disabled class="form-control m-2" id="txtId">
+                    <input type="text" class="form-control m-2" id="txtTitle">
+                    <input type="text" class="form-control m-2" id="txtAuthor">
+                    <input type="text" class="form-control m-2" id="txtPrice">
+                    <button id="btnUpdate" class="btn btn-danger">Save Changes</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h1 class="h1">Add Book Details</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

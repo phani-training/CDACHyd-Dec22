@@ -26,17 +26,44 @@
 
         function onAddRecord(){
            const emp = {};
-           emp.EmpID = $("#txtId").val();
+           emp.EmpID = parseInt($("#txtId").val());//Stores as number..
            emp.EmpName = $("#txtName").val();
            emp.EmpAddress = $("#txtAddress").val();
-           emp.EmpSalary = $("#txtSalary").val();
+           emp.EmpSalary = parseInt($("#txtSalary").val());
            $.post(baseUrl, emp, (data)=>{
             alert(data);
            })
         }
+        function onFindEmployee(){
+            const value = parseInt(prompt("Enter the Id of the Employee to search"));
+            const tempUrl = `${baseUrl}/${value}`
+            $.get(tempUrl, (empRecArray)=>{
+                $("#txtOldId").val(empRecArray[0].EmpID)
+                $("#txtOldName").val(empRecArray[0].EmpName)
+                $("#txtOldAddress").val(empRecArray[0].EmpAddress)
+                $("#txtOldSalary").val(empRecArray[0].EmpSalary)
+            })
+        }
+        function onUpdateRecord(){
+            const emp = {};
+            emp.EmpID = parseInt($("#txtOldId").val());//Stores as number..
+            emp.EmpName = $("#txtOldName").val();
+            emp.EmpAddress = $("#txtOldAddress").val();
+            emp.EmpSalary = parseInt($("#txtOldSalary").val());
+            $.ajax({
+                url: baseUrl,
+                method:'PUT',
+                data: emp,
+                success : function(res){
+                    alert(res)
+                }
+            })
+        }
         function init(){
             populateTable();
-            $("button").click(onAddRecord);
+            $("#btnAdd").click(onAddRecord);
+            $("#btnUpdate").click(onUpdateRecord);
+            $("nav > a").click(onFindEmployee);
         }
         $().ready(init);
     </script>
@@ -52,6 +79,10 @@
 </head>
 <body>
     <h1 class="heading">Employee management Software</h1>
+    <hr>
+    <nav>
+        <a href="#">Find Employee</a>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -67,13 +98,24 @@
                 </table>
             </div>
             <div class="col-md-4">
-                <h2 class="h2 text-primary">New Employee</h2>
-                <hr>
-                <p>Enter the ID: <input type="number" id="txtId" placeholder="ID" class="form-control"></p>
-                <p>Enter the Name: <input id="txtName" placeholder="Name" class="form-control"></p>
-                <p>Enter the Address: <input id="txtAddress" placeholder="Address" class="form-control"></p>
-                <p>Enter the Salary<input type="number" id="txtSalary" placeholder="Salary" class="form-control"></p>
-                <p><button class="btn btn-success">Add Employee</button></p>
+                <div>
+                    <h2 class="h2 text-primary">Employee Details</h2>
+                    <hr>
+                    <p>Enter the ID: <input type="number" disabled id="txtOldId" placeholder="ID" class="form-control"></p>
+                    <p>Enter the Name: <input id="txtOldName" placeholder="Name" class="form-control"></p>
+                    <p>Enter the Address: <input id="txtOldAddress" placeholder="Address" class="form-control"></p>
+                    <p>Enter the Salary<input type="number" id="txtOldSalary" placeholder="Salary" class="form-control"></p>
+                    <p><button id="btnUpdate" class="btn btn-primary">Update Employee</button></p>
+                </div>
+                <div>
+                    <h2 class="h2 text-primary">New Employee</h2>
+                    <hr>
+                    <p>Enter the ID: <input type="number" id="txtId" placeholder="ID" class="form-control"></p>
+                    <p>Enter the Name: <input id="txtName" placeholder="Name" class="form-control"></p>
+                    <p>Enter the Address: <input id="txtAddress" placeholder="Address" class="form-control"></p>
+                    <p>Enter the Salary<input type="number" id="txtSalary" placeholder="Salary" class="form-control"></p>
+                    <p><button id="btnAdd" class="btn btn-success">Add Employee</button></p>
+                </div>
             </div>
         </div>
     </div>
