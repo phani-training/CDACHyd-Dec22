@@ -22,3 +22,12 @@
 # Example of Express Application.
 1. When the HTML form POST the data to the Application, it will post it as BODY. The term "body of the form" implies the inputs that User gives for the form submit. 
 2. In express, we need a body-parser to parse(process) the body. If no parser is provided, then the body will not be created in Express. In this case, the body if refered, it will be undefined. 
+
+## Mongoose
+- Mongoose is an ORM setup for Mongodb. Very similar to the way Hibernate, JPA and Entity Framework of .NET works. U create Class schemas on the collections that U 
+- With Mongoose, U can develop Class schemas based on which the database creates the collections and consumes it. 
+- Mongoose is a framwork for connecting MongoDB in more flexible and easy manner. 
+- U need EXPRESS to create the server, U need a schema to define the collection used in the Mongodb and finally APIs to perform the CRUD operations. 
+- Steps:
+- Create the schema for for the collection. The Schema fine defines the columns of UR data including the type, name and other constraints. 
+- Create the Server app that connects to the database using mongoose API and performs UR CRUD operations. 
