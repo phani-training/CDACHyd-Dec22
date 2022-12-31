@@ -22,7 +22,26 @@
 # Example of Express Application.
 1. When the HTML form POST the data to the Application, it will post it as BODY. The term "body of the form" implies the inputs that User gives for the form submit. 
 2. In express, we need a body-parser to parse(process) the body. If no parser is provided, then the body will not be created in Express. In this case, the body if refered, it will be undefined. 
+# Connect to MongoDB
+- Include the package called mongodb. ==> npm install mongodb
+- Connect to the Url that is specified in the Mongo Command. 
+- connect is the API to connect to the database which returns a Promise object. 
+- The Promise's then function is used to handle regular Flow. It takes an arg of the db object that contains the instance of the mongodb connection.  
 
+```
+const mongo = require("mongodb").MongoClient;
+const url = "mongodb://127.0.0.1:27017/";//Database URL for connecting to the database
+let database; //Create an object for the Db connection. 
+mongo.connect(url).then(db =>{
+	database = db.db("SampleDatabase");
+    //get the Employee records using collection API that takes the argument of the Collection that U want retrieve. 
+	database.collection("employees").find().toArray().then(result =>{
+		result.forEach((e)=>{
+			console.log(e);
+		})
+	});	
+}).catch((err)=>console.log(err.message));
+```
 ## Mongoose
 - Mongoose is an ORM setup for Mongodb. Very similar to the way Hibernate, JPA and Entity Framework of .NET works. U create Class schemas on the collections that U 
 - With Mongoose, U can develop Class schemas based on which the database creates the collections and consumes it. 
