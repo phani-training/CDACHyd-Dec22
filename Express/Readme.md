@@ -42,6 +42,23 @@ mongo.connect(url).then(db =>{
 	});	
 }).catch((err)=>console.log(err.message));
 ```
+- use express to create REST API and connect to Mongodb as database. 
+- MERN Stack: MongoDB(Database), Express(Service), React(FrontEnd App), Nodejs(Platform)
+- MEAN Stack: MongoDB(Database), Express(Service), Angular(FrontEnd App), Nodejs(Platform)
+- API means functions that other programmers can use in their Application. APIs are designed to be platform independent and technology independent. 
+
+- APIs that are accessed using HTTP and its verbs are called as REST API Services.
+- This is the most popular Service oriented Architecture available in the industry.
+- Java Programmers develop APIs using SpringBoot and other Frameworks. 
+- .NET Programmres use Web API to develop Rest services. 
+- Python uses flask to develop REST API. 
+- PHP can also expose the functions thru REST. 
+- REST APIs transfer data using stds like JSON and XML. These are stds for data transfer. REST APIs only share data, not the Presentation. 
+- For MongoDb, U can connect to the database either by using MongoClient which is the native API developed for MongoDB by nodejs. U can also connect to the database using a ORM Framwork called Mongoose.
+
+- Express is used to expose the REST API. 
+
+
 ## Mongoose
 - Mongoose is an ORM setup for Mongodb. Very similar to the way Hibernate, JPA and Entity Framework of .NET works. U create Class schemas on the collections that U 
 - With Mongoose, U can develop Class schemas based on which the database creates the collections and consumes it. 
