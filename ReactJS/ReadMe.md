@@ -28,3 +28,4 @@ npx create-react-app nameoftheApp
 cd nameOftheApp
 npm start
 ```
+<img width="515" alt="image" src="https://user-images.githubusercontent.com/79626160/210161448-5deeef6c-6da6-425b-9681-9ea290c8aa20.png">
