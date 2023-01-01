@@ -23,5 +23,6 @@
 2. Use the following command to create a Simple react App
     - npx create-react-app nameoftheApp
 3. Move to the newly created directory in the name of the Application. 
-4. Run the following command to start the Application:  
+    - cd nameOftheApp
+5. Run the following command to start the Application:  
     - npm start ->React App will run...
