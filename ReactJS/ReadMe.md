@@ -19,10 +19,12 @@
 
 # Steps to create a React App:
 1. Install the npm package called npx, the CLI for building React Apps.
-    - npm install -g npx
 2. Use the following command to create a Simple react App
-    - npx create-react-app nameoftheApp
 3. Move to the newly created directory in the name of the Application. 
-    - cd nameOftheApp
-5. Run the following command to start the Application:  
-    - npm start ->React App will run...
+4. Run the following command to start the Application:  
+```
+npm install -g npx
+npx create-react-app nameoftheApp
+cd nameOftheApp
+npm start
+```
