@@ -68,3 +68,7 @@ mongo.connect(url).then(db =>{
 - Steps:
 - Create the schema for for the collection. The Schema fine defines the columns of UR data including the type, name and other constraints. 
 - Create the Server app that connects to the database using mongoose API and performs UR CRUD operations. 
+
+### Architecture of REST API and our REST CLIENT:
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/79626160/210161489-102511c3-83b5-42f2-a6df-d2488976b175.png">
+
