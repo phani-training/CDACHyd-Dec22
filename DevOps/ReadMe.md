@@ -98,3 +98,11 @@ Open a new terminal and run the command to interact with Mongodb:
 ```
 docker exec -it mongoContainer mongosh
 ```
+#### Some of the mongodb commands
+```
+show dbs
+use SampleDb
+db.createCollection("empList")
+db.empList.insertOne({}) //Inserting record to the collection empList
+db.empList.find()//Select * from empList.
+```
