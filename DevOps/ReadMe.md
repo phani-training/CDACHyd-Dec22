@@ -78,3 +78,23 @@ It works similar to docker but it shares the Memory of the host and also the ker
 1. Containers use the same kernel of the Host Environment but VMs use independent OS Kernels.
 2. Containers have only the bare minimal infrastructure of an App to run whereas a VM will host a complete OS in it where U can not only run UR application but also run other apps that may or may not be required for UR Application. 
 3. Docker Containers are common platforms for all kinds of OS as it uses the Common Linux kernel which other OS can/will install. They are hense more adaptable compared to VMs. 
+
+### Installing Docker in UR machine:
+1. Install the WSL(Windows SubSystem For Linux), which is the prerequisite for installing Docker in Windows Machine. U run a command: wsl --install U should be running the terminal as an Adminstrator.
+2. After restarting the machine, U can install the Docker App thru the setup that U can download from the Docker Website. It can be downloaded from https://www.docker.com/products/docker-desktop/
+3. Docker immediately starts at the bootup and wait for the Docker to start.The green ribbon at the left bottom side will indicate that the Docker is running successfully. 
+4. The purpose of the WSL is only for Windows OS. As Docker needs Linux Kernel for its execution, we need to install this package. 
+
+### Download the MongoDb and use it.
+Create a volume to store UR mongodb data. 
+'''
+docker volume create --name= MyContainer
+'''
+Run the following command to download the Mongodb container in our Docker
+'''
+docker run -it --rm --name mongoContainer mongo:latest mongod
+'''
+Open a new terminal and run the command to interact with Mongodb:
+'''
+docker exec -it mongoContainer mongosh
+'''
