@@ -87,22 +87,33 @@ It works similar to docker but it shares the Memory of the host and also the ker
 
 ### Download the MongoDb and use it.
 Create a volume to store UR mongodb data. 
-```
+'''
 docker volume create --name= MyContainer
-```
+'''
 Run the following command to download the Mongodb container in our Docker
-```
+'''
 docker run -it --rm --name mongoContainer mongo:latest mongod
-```
+'''
 Open a new terminal and run the command to interact with Mongodb:
-```
+'''
 docker exec -it mongoContainer mongosh
+'''
+
+### Creating Docker Images:
+#### Docker image on a Java Application:
+1. Create a new Folder and give a name to it as per UR Application Requirement.
+2. Create the required Java Files inside it. 
+3. Build the application locally and test it.  
+4. After the Application is tested locally, U can ship it to the Docker
+5. Create a file called Dockerfile, a Text file with no extension. Provide all the instructions required for the Application to build in it. (File is shared). 
+6. Build the Docker Image by using the following command:
 ```
-#### Some of the mongodb commands
+docker build -t java-app . 
+``` 
+7. After the docker builds UR Image, its time to run the Application:
 ```
-show dbs
-use SampleDb
-db.createCollection("empList")
-db.empList.insertOne({}) //Inserting record to the collection empList
-db.empList.find()//Select * from empList.
+docker run java-app
 ```
+#### options :
+1. -t =>Flag to tell the docker to allocate the Virtual Terminal within the container to start UR Program.
+2. -i =>Flag to tell the Docker to execute the Application in interactive mode, usefull when U have to take inputs from the user.  
