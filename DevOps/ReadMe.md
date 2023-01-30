@@ -87,14 +87,14 @@ It works similar to docker but it shares the Memory of the host and also the ker
 
 ### Download the MongoDb and use it.
 Create a volume to store UR mongodb data. 
-'''
+```
 docker volume create --name= MyContainer
-'''
+```
 Run the following command to download the Mongodb container in our Docker
-'''
+```
 docker run -it --rm --name mongoContainer mongo:latest mongod
-'''
+```
 Open a new terminal and run the command to interact with Mongodb:
-'''
+```
 docker exec -it mongoContainer mongosh
-'''
+```
