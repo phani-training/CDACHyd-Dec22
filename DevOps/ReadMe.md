@@ -1,4 +1,4 @@
-# DevOps Training
+# DevOps Training by Phaniraj @9945205684
 ### Subtopics:
 1. What is DevOps
 2. Docker
@@ -117,3 +117,39 @@ docker run java-app
 #### options :
 1. -t =>Flag to tell the docker to allocate the Virtual Terminal within the container to start UR Program.
 2. -i =>Flag to tell the Docker to execute the Application in interactive mode, usefull when U have to take inputs from the user.  
+
+### How realtime apps work?
+1. Developer develops the required Task in his Environment and get it approved with PRTI(Personal Review and Team Inspection). 
+2. The Developer pushes the code to the Code Repository(Git, Bitbucket or TFS).
+3. Once the Code is pushed, a CIT will come into picture which pulls the code from the Repo and builds in a containerized environment or production environment and once it is built successfully, it will push the Application to a container like Docker or a Cloud Production Environment. 
+------------------------------------------------------------------------------------------------
+# JENKINS:
+### What is continuous Integration?
+An Orchestration of a Chain of activities to be performed when a code is pushed to the Repo and rest of the operations are taken up automatically that helps in pipelineing the application build, test and deployement and also do some operational sequences all done without an exclusive resource to monitor it. The CIT is responsible to keep track on any code change that has happened in the Repo, triggering a series of tasks and finally does a post build task before terminating the Execution. These series of tasks could be pulling the code, setting the environment, build the code, run the test cases, run the E2E Test cases, and finally push the completed Application into a designated storage place which could be a Container or a Clound AWS Environment. <br/>
+The Most popular CIT is Jenkins. 
+### How does this work?
+It is basically a server side web app that runs on a Web server like Apache TomCat. It can run on multiple platforms like Windows, Mac or Linux. To use the Jenkins we need to create pipelines or a group of tasks which work like a chain of operations. This is a continous process which will monitor the Environment all the time. Jenkins will internally use 3rd party tools to build, test, monitor, raise reports, enforce coding rules and regulations, update changes and even trigger emails to all the stake holders of the product.  
+### How to install and run Jenkins to build a simple Java Application. 
+1. U should have JDK 8.0 or later. Set the Environment variables like JAVA_HOME, JRE_HOME and Path. 
+2. Download the Jenkins from the Website. 
+3. During the Installation, the Wizard will ask for the JRE Location. 
+4. U can set the port no for the jenkins, default is 8080. 
+5. U will login to the jenkins Application. Initially U will provide a Preset password that is available in the location of C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword. After logging in, U can reset the password as per UR needs. 
+6. For the very first time, Jenkins will ask UR permission to install plugins required for UR Environment. For real time apps, there are lot of tools that must be installed, but for our Application git would be enough. 
+7. After the installation is done, the browser opens with the dashboard of the Jenkins where Users can add new Jobs or Tasks for the Jenkins to perform. 
+
+### Create a new Job in Jenkins:
+1. Create the Application that U want to build in Jenkins
+2. Create a new job in the dashboard by clicking new Item.
+3. Define a Desc about UR Task. 
+4. Select the location of the source code of UR Application which can be either a git repo or a local folder. Select Custom Workspace by clicking Advanced Button in the General section. 
+5. In the Build Steps, select the Windows Command bat file and provide the required commands to execute:
+```
+javac ./FileName.java
+java FileName
+```
+6. Additional Settings like POST BUILD could be set to run certain test cases or create the App in a docker container. 
+7. U could also make the App build periodically by setting the H, M, D W. Refer the HELP Window.
+-----------------------------------------------------------------------------------------------
+# Microservices
+1. 
