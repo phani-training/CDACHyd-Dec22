@@ -1,0 +1,59 @@
+name: dockercompose7923616200004206132
+services:
+  coreappwithdocker:
+    build:
+      context: C:\Trainings\CDACHyd-Dec22\DevOps\MicroservicesProject
+      dockerfile: CoreAppWithDocker/Dockerfile
+    container_name: customer-api
+    depends_on:
+      customerdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DB_HOST: customer-db
+      DB_NAME: customer
+      DB_PASSWORD: apple@123#
+    image: coreappwithdocker
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    - mode: ingress
+      target: 1433
+      published: "8002"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\phani\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\phani\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  customerdb:
+    container_name: customer-db
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: apple@123#
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "8001"
+      protocol: tcp
+networks:
+  backend:
+    name: dockercompose7923616200004206132_backend
