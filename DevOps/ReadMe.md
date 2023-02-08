@@ -152,4 +152,48 @@ java FileName
 7. U could also make the App build periodically by setting the H, M, D W. Refer the HELP Window.
 -----------------------------------------------------------------------------------------------
 # Microservices
-1. 
+1. They are dividing UR large scale Application into small units which are independent of another. In our current scenario, we might develop very large and complex apps that take a lot of time to build and deploy. The Code building process would take time and deployment will be difficult. To reduce these complexities companies are moving towards microservices where UR App is cut into small but independent executable Services that can be easily contained inside a Container like Docker and published. 
+This is easy to develop as U will be creating smaller modules and services are small so that it is easy to maintain. Any issue with one service will not affect the main Application. 
+2. Microservices can be created using various technologies like Java, .NET and Open source. 
+3. We will use Microservices using .NET CORE and Docker to publish the Application.
+
+# Key Questions?
+### What is the software required?
+1. Windows 10 or later
+2. Visual Studio 2017 or later where Docker is supported. 
+3. .NET CORE SDK for platform independence. 
+4. Docker for Windows. 
+5. Docker Tools from Visual Studio. 
+### Why should we use Microservices instead of Monolithic Apps?
+1. MS is to develop smaller but effective services that each service will run on its own process. We develop small scale services than big apps.
+2. Because of their small size it is easy to maintain. 
+3. It can be scaled quickly and can be reused in multiple projects. 
+4. With smaller size, it can be easily placed in Containers like Dockers.
+5. Each MS is an independent App service, if one of them fails, it will have very little or less risk on the Full Application, it will not be a show stopper. 
+### Why .NET CORE?
+It is open source and has lots of APIs to develop high performance Internet and Web Apps along Service oriented Apps. With VS, it is fast in development and UI support for DIs and Cloud based Configurations are very handy. 
+### Why should we contain it in Docker?
+Docker helps in containerization of the services, light weight, low cost and unlike VMs, we dont need to pre allocate RAM for the Containers. 
+### How to create this service in Visual Studio
+1. VS 2017 or later should be selected. Create a Project of the type ASP.NET CORE WEB API. 
+2. Create the required Data classes
+3. Create the Controllers requried for the Application. 
+4. Create the requried docker files. 
+5. If connecting to SQL server, create the image of the SQL server in docker
+6. Using YAML, U provide the network b/w the Application Container and SQL server container. This feature is called as Orchestration feature. 
+--------------------------------------------------------------------------------------------------
+# Kubernetes(K8s)
+- It is a container management system developed on Google platform. It's main purpose is helping in managing the Containerized Apps on various platforms like cloud, Virtual Servers and local servers. It is said to be one of the most popular Container management Tools. 
+- It is purely a cloud based environment. It comes with many automation tools that will be used to maintain the large scale containers as one Unit. 
+- As DevOps Engineer, one will get skills on using these automation tools to manage the Applications and ensure that no break down of the software happen. 
+- It uses a concept called CLUSTERS where each cluster is a repository of 100s of containers grouped into Worker nodes or PODs. Each POD might be an Application that has multiple containers in it. Each container can have one or more Microservices in it. 
+- K8s maintain multiple clusters for the management of the nodes. The Application will be available to user thru Primary Cluster. If the primary cluster fails for maintainence or any other reason, a secondary cluster will be made available for the Application to continue its services to the Customer. Once the Primary Cluster is back to work, a cached state of the secondary cluster is pushed into the Primary one and the Application continues to provide the services. 
+
+### How K8s work?
+- It is linux based Environment that shares lots of resources required to manage UR Complex Apps. It is primarily used for Distributed Computing Applications where the K8s abstract the underlying hardware resources and offers std and consistant UI that one can monitor from a common place. This UI will be used by the Dev Ops Engineer who will be responsible for the maintainence of the Application. The UI looks similar to a Dashboard of JENKINS, where he/she can monitor multiple applications, clusters and allocate the resources required for each of the Applications. The DevOps Engineer also determines the amount of resources that each App may require and allocate the resources accordingly. 
+
+### Issues:
+It needs a heavy infrastructure to showcase the Application. The Complete pipeline is done by a team of testers, DevOps Engineers and QAT teams. Its a collaborative work to make UR services hosted in a K8s server. Its not so user friendly. Ofcourse, there are many UI tools to manage these infrastructure. 
+
+https://youtube.com/watch?v=X48VuDVv0do&feature=shares
+U can view this tutorial for further reference. 
